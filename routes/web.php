@@ -26,3 +26,8 @@ Route::middleware(['auth', 'role:agent'])->group(function () {
 Route::middleware(['auth', 'role:vendeur'])->group(function () {
     Route::get('/vendeur', [BienController::class, 'create'])->name('vendeur.dashboard');
 });
+
+// Redirect root URL to /accueil
+Route::get('/', function () {
+    return redirect('/accueil');
+});
