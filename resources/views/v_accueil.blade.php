@@ -7,7 +7,22 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<header>Bienvenue sur Quartier Privé</header>
+<header>
+    <div class="header-container">
+        <span>Bienvenue sur Quartier Privé</span>
+        <div class="auth-buttons">
+            @guest
+                <a href="{{ route('login') }}" class="auth-button">Se connecter</a>
+            @else
+                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="auth-button">Se déconnecter</button>
+                </form>
+            @endguest
+        </div>
+    </div>
+</header>
+
 <div class="container">
     <h1 class="text-3xl font-bold mb-4">Liste des biens disponibles</h1>
 
